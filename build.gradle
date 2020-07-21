@@ -1,0 +1,43 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'lenala.azure.azurewebapp' version '1.0.1'
+}
+
+group = 'ch.kleemans'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+azureWebApp {
+    resourceGroup = 'demo-app'
+    appName = 'demo-app-angular'
+    pricingTier = 'F1'
+    region = 'central-us'
+    appService = {
+        type = 'linux'
+        javaVersion = 'jre8'
+        runtimeStack = 'jre8'
+    }
+    authentication = {
+        type = 'azurecli'
+    }
+    deployment = {
+        type = 'jar'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

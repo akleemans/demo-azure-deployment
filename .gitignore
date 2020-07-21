@@ -8,9 +8,12 @@
 *.tar.gz
 *.rar
 
-/demoapp-frontend/node_modules
 build/generated/
 build/resources/
 build/tmp/
 /src/main/resources/static/
 /.gradle/
+/demoapp-frontend/node_modules
+/demoapp-frontend/dist/
+/demoapp-frontend/tmp
+/demoapp-frontend/out-tsc
